@@ -1,13 +1,19 @@
 import axios from 'axios';
 
-class Quidax {
-  private base_url: string;
-  private options: { headers: { Authorization: string } };
-  // private merchant_id: string;
+/**
+ * The quidax module for handling all quidax related operations.
+ * @class Quidax
+ * @param {string} api_key - The public key of the merchant
+ * @param {string} merchant_id - The id of the merchant
+ */
+export class Quidax {
+  public base_url: string;
+  public options: { headers: { Authorization: string } };
+  // public merchant_id: string;
 
   constructor(
     public api_key: string,
-    public merchant_id: string,
+    public merchant_id?: string,
   ) {
     this.merchant_id = merchant_id;
     this.base_url = 'https://www.quidax.com/api/v1';
@@ -169,4 +175,4 @@ class Quidax {
     }
   }
 }
-export default Quidax;
+// export default Quidax;
