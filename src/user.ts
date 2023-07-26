@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Quidax from './quidax';
 /**
- * The quidax module for handling all quidax related operations.
+
  * @class Quidax
  * @param {string} api_key - The public key of the merchant
  * @param {string} merchant_id - The id of the merchant
