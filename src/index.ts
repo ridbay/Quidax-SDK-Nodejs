@@ -1,10 +1,10 @@
 import User from './user';
 import Wallets from './wallets';
-import { UserType, WalletsType } from './types';
+// import { UserType, WalletsType } from './types';
 
 class Quidax {
-  user: UserType;
-  wallets: WalletsType;
+  user: User;
+  wallets: Wallets;
 
   constructor(public api_key: string) {
     this.user = new User(this.api_key);
