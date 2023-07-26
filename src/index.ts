@@ -1,6 +1,6 @@
 import User from './user';
 import Wallets from './wallets';
-import { UserType, WalletsType } from '../index.d';
+import { UserType, WalletsType } from './types';
 
 class Quidax {
   user: UserType;
