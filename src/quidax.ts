@@ -9,13 +9,8 @@ import axios from 'axios';
 export class Quidax {
   public base_url: string;
   public options: { headers: { Authorization: string } };
-  // public merchant_id: string;
 
-  constructor(
-    public api_key: string,
-    public merchant_id?: string,
-  ) {
-    this.merchant_id = merchant_id;
+  constructor(public api_key: string) {
     this.base_url = 'https://www.quidax.com/api/v1';
     this.options = {
       headers: {
@@ -106,12 +101,12 @@ export class Quidax {
     }
   }
 
-  public async create_a_withdrawal_to_merchant(amount: string, user_id: string) {
+  public async create_a_withdrawal_to_merchant(amount: string, user_id: string, merchant_id: string) {
     const currency = 'ngn';
 
     try {
       const response = await axios.post(
-        `${this.base_url}/users/${user_id}/withdraws/?currency=${currency}&amount=${amount}&fund_uid=${this.merchant_id}`,
+        `${this.base_url}/users/${user_id}/withdraws/?currency=${currency}&amount=${amount}&fund_uid=${merchant_id}`,
         null,
         this.options,
       );
