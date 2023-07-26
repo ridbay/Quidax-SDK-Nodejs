@@ -6,7 +6,7 @@ import axios from 'axios';
  * @param {string} api_key - The public key of the merchant
  * @param {string} merchant_id - The id of the merchant
  */
-export class Quidax {
+class Quidax {
   public base_url: string;
   public options: { headers: { Authorization: string } };
 
@@ -170,4 +170,4 @@ export class Quidax {
     }
   }
 }
-// export default Quidax;
+export default Quidax;
