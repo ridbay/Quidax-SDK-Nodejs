@@ -20,13 +20,12 @@ class Withdrawals {
     };
   }
 
-
   public async fetch_market_tickers() {
     try {
       const response = await axios.get(`${this.base_url}/markets/tickers`);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 }

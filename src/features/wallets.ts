@@ -31,7 +31,7 @@ class Wallets {
       const response = await axios.post(url, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -40,7 +40,7 @@ class Wallets {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}/address`, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -49,7 +49,7 @@ class Wallets {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}/addresses`, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -58,7 +58,7 @@ class Wallets {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}`, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -67,7 +67,7 @@ class Wallets {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets`, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 }

@@ -36,7 +36,7 @@ class Withdrawals {
       );
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -49,7 +49,7 @@ class Withdrawals {
       );
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -61,7 +61,7 @@ class Withdrawals {
       );
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 }

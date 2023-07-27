@@ -38,7 +38,7 @@ class User {
       return data;
     } catch (error) {
       // console.log({ error });
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 
@@ -47,7 +47,7 @@ class User {
       const response = await axios.get(`${this.base_url}/users`, this.options);
       return response.data;
     } catch (error) {
-      CustomError.processError(error)
+      CustomError.processError(error);
     }
   }
 }
