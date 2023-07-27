@@ -20,6 +20,21 @@ class Wallets {
     };
   }
 
+  public async create_payment_address(user_id: string, currency: string, network: string) {
+    try {
+      let url;
+    if (currency === 'usdt') {
+      url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
+    } else {
+      url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses`;
+    }
+      const response = await axios.post(url, this.options);
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  }
+
   public async fetch_payment_address(user_id: string, currency: string) {
     try {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}/address`, this.options);
@@ -41,6 +56,15 @@ class Wallets {
   public async fetch_user_wallet(user_id: string, currency: string) {
     try {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}`, this.options);
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  public async fetch_all_user_wallets(user_id: string) {
+    try {
+      const response = await axios.get(`${this.base_url}/users/${user_id}/wallets`, this.options);
       return response.data;
     } catch (error) {
       return error;
