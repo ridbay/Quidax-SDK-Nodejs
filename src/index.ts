@@ -12,3 +12,5 @@ class Quidax {
   }
 }
 export default Quidax;
+
+// testing
