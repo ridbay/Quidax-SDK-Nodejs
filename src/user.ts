@@ -31,10 +31,10 @@ class User {
       const response = await axios.post(`${this.base_url}/users`, body, this.options);
       const { data } = response;
       // eslint-disable-next-line eqeqeq
-      if(data?.response?.status > 300){
-        throw Error(data)
+      if (data?.response?.status > 300) {
+        throw Error(data);
       }
-      
+
       return data;
     } catch (error) {
       // console.log({ error });
