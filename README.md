@@ -44,16 +44,9 @@ import Quidax  from 'quidax-package'; // Typescript
 Instantiate the Quidax class
 
 ```js
-const quidax = new Quidax(PRIVATE_KEY, { merchant_id });
-```
-
-**Note:**
-
-- The merchant id field is optional, you don't have to specify it, For example:
-
-```javascript
 const quidax = new Quidax(PRIVATE_KEY);
 ```
+
 
 - For more information about the services exposed by the Package, please refer to the [documentation](https://docs.quidax.com/reference/introduction-user-accounts).
 - Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html).
