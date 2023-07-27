@@ -37,8 +37,8 @@ yarn add quidax-package
 ## Usage
 
 ```js
-const { Quidax } = require('quidax-package'); // JavaScript
-import { Quidax } from 'quidax-package'; // Typescript
+const Quidax  = require('quidax-package'); // JavaScript
+import Quidax  from 'quidax-package'; // Typescript
 ```
 
 Instantiate the Quidax class
