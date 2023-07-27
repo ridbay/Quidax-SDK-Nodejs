@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import axios from 'axios';
 
 /**
@@ -8,6 +9,7 @@ import axios from 'axios';
  */
 class Quidax {
   public base_url: string;
+
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {

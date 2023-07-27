@@ -3,6 +3,7 @@ import Wallets from './wallets';
 
 class Quidax {
   user: User;
+
   wallets: Wallets;
 
   constructor(public api_key: string) {

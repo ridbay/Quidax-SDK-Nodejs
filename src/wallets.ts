@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Quidax from './quidax';
+
 /**
  * The quidax module for handling all quidax related operations.
  * @class Quidax
@@ -8,6 +8,7 @@ import Quidax from './quidax';
  */
 class Wallets {
   public base_url: string;
+
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {

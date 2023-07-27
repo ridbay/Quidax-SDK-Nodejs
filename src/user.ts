@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Quidax from './quidax';
+// import Quidax from './quidax';
 /**
 
  * @class Quidax
@@ -8,6 +8,7 @@ import Quidax from './quidax';
  */
 class User {
   public base_url: string;
+
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {
