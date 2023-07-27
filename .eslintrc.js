@@ -12,6 +12,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-    "import/no-extraneous-dependencies":"off"
+    "import/no-extraneous-dependencies":"off",
+    "consistent-return":"off"
   },
 };

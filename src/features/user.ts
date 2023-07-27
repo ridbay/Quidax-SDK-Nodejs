@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import Quidax from './quidax';
+import CustomError from '../util/errors';
 /**
 
  * @class Quidax
@@ -38,7 +38,7 @@ class User {
       return data;
     } catch (error) {
       // console.log({ error });
-      return error;
+      CustomError.processError(error)
     }
   }
 
@@ -47,7 +47,7 @@ class User {
       const response = await axios.get(`${this.base_url}/users`, this.options);
       return response.data;
     } catch (error) {
-      return error;
+      CustomError.processError(error)
     }
   }
 }

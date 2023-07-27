@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import CustomError from '../util/errors';
 /**
  * The quidax module for handling all quidax related operations.
  * @class Quidax
@@ -20,12 +20,13 @@ class Withdrawals {
     };
   }
 
+
   public async fetch_market_tickers() {
     try {
       const response = await axios.get(`${this.base_url}/markets/tickers`);
       return response.data;
     } catch (error) {
-      return error;
+      CustomError.processError(error)
     }
   }
 }
