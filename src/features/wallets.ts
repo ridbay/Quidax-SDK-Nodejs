@@ -9,20 +9,22 @@ import CustomError from '../util/errors';
 class Wallets {
   public base_url: string;
 
-  public options: { headers: { Authorization: string } };
+  public options: { headers: { 'Content-Type': string; Authorization: string } };
 
   constructor(public api_key: string) {
     this.base_url = 'https://www.quidax.com/api/v1';
     this.options = {
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${api_key}`,
       },
     };
   }
 
   public async create_payment_address(user_id: string, currency: string, network: string) {
+    let url;
     try {
-      let url;
+      // let url;
       if (currency === 'usdt') {
         url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
       } else {
@@ -32,7 +34,12 @@ class Wallets {
 
       return response.data;
     } catch (error) {
-      CustomError.processError(error);
+      // CustomError.processError(error);
+      return {
+        error,
+        url,
+        options: this.options,
+      };
     }
   }
 
