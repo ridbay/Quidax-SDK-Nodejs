@@ -1,6 +1,6 @@
 {
   "name": "quidax-package",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "quidax package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
