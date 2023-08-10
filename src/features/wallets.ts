@@ -28,7 +28,8 @@ class Wallets {
       } else {
         url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses`;
       }
-      const response = await axios.post(url, this.options);
+      const response = await axios.post(url, null, this.options);
+
       return response.data;
     } catch (error) {
       CustomError.processError(error);
