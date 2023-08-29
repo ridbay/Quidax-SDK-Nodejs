@@ -6,7 +6,7 @@ import CustomError from '../util/errors';
  * @param {string} api_key - The public key of the merchant
  * @param {string} merchant_id - The id of the merchant
  */
-class Markets {
+class Deposits {
   public base_url: string;
 
   public options: { headers: { Authorization: string } };
@@ -20,9 +20,12 @@ class Markets {
     };
   }
 
-  public async fetch_market_tickers() {
+  public async fetch_single_deposit(user_id: string, deposit_id: string) {
     try {
-      const response = await axios.get(`${this.base_url}/markets/tickers`);
+      const response = await axios.get(
+        `https://www.quidax.com/api/v1/users/${user_id}/deposits/${deposit_id}`,
+        this.options,
+      );
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -30,4 +33,4 @@ class Markets {
   }
 }
 
-export default Markets;
+export default Deposits;

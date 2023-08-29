@@ -6,7 +6,7 @@ import CustomError from '../util/errors';
  * @param {string} api_key - The public key of the merchant
  * @param {string} merchant_id - The id of the merchant
  */
-class Withdrawals {
+class Orders {
   public base_url: string;
 
   public options: { headers: { Authorization: string } };
@@ -66,4 +66,4 @@ class Withdrawals {
   }
 }
 
-export default Withdrawals;
+export default Orders;
