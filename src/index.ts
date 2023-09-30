@@ -19,7 +19,7 @@ class Quidax {
   deposits: Deposits;
 
   constructor(public api_key: string) {
-    this.user:User = new User(this.api_key);
+    this.user = new User(this.api_key);
     this.wallets = new Wallets(this.api_key);
     this.market = new Market(this.api_key);
     this.orders = new Orders(this.api_key);
