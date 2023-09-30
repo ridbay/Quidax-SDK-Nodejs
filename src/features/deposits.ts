@@ -31,6 +31,18 @@ class Deposits {
       CustomError.processError(error);
     }
   }
+
+  public async fetch_all_deposit(user_id: string, currency: string, state: string, per_page: string, page: string) {
+    try {
+      const response = await axios.get(
+        `https://www.quidax.com/api/v1/users/${user_id}/deposits?currency=${currency}&state=${state}&per_page=${per_page}&page=${page}`,
+        this.options,
+      );
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
 }
 
 export default Deposits;
