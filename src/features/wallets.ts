@@ -22,12 +22,12 @@ class Wallets {
 
   public async create_payment_address(user_id: string, currency: string, network: string) {
     try {
-      let url;
-      if (currency === 'usdt') {
-        url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
-      } else {
-        url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses`;
-      }
+      const url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
+      // if (currency === 'usdt') {
+      //   url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
+      // } else {
+      //   url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses`;
+      // }
       const response = await axios.post(url, null, this.options);
 
       return response.data;
