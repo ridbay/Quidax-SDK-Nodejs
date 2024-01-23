@@ -14,4 +14,4 @@ export enum StatusCodes {
   BadGateway = 522,
 }
 
-export type NetworkType = 'btc' | 'eth' | 'bep20' | 'erc20' | 'trc20' | 'none';
+export type NetworkType = 'btc' | 'bep20' | 'erc20' | 'trc20' | 'doge' | 'none';
