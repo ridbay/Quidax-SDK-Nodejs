@@ -64,6 +64,19 @@ class Orders {
       CustomError.processError(error);
     }
   }
+
+  public async fetch_instant_orders_by_currency(user_id: string, currency: string) {
+    try {
+      const response = await axios.get(
+        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders?market=${currency}ngn&state=done&order_by=desc`,
+        this.options,
+      );
+
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
 }
 
 export default Orders;
