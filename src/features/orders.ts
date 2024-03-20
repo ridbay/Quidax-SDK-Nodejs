@@ -71,7 +71,6 @@ class Orders {
         `https://www.quidax.com/api/v1/users/${user_id}/instant_orders?market=${currency}ngn&state=done&order_by=desc`,
         this.options,
       );
-
       return response.data;
     } catch (error) {
       CustomError.processError(error);
