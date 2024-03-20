@@ -42,6 +42,22 @@ class User {
     }
   }
 
+  public async fetch_single_subAccount(email: string) {
+    try {
+      const response = await axios.get(`${this.base_url}/user/email?user_id=${email}`, this.options);
+      const { data } = response;
+      // eslint-disable-next-line eqeqeq
+      if (data?.response?.status > 300) {
+        throw Error(data);
+      }
+
+      return data;
+    } catch (error) {
+      // console.log({ error });
+      CustomError.processError(error);
+    }
+  }
+
   public async fetch_all_subAccounts() {
     try {
       const response = await axios.get(`${this.base_url}/users`, this.options);
