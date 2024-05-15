@@ -20,6 +20,29 @@ class Orders {
     };
   }
 
+  public async create_order(
+    user_id: string,
+    market: string,
+    side: 'buy' | 'sell',
+    ord_type: 'limit' | 'market',
+    price: string,
+    volume: string,
+  ) {
+    const body = {
+      market,
+      side,
+      ord_type,
+      price,
+      volume,
+    };
+    try {
+      const response = await axios.post(`https://www.quidax.com/api/v1/users/${user_id}/orders`, body, this.options);
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
+
   public async create_instant_order(user_id: string, currency: string, volume: number) {
     const body = {
       bid: 'ngn', // Sell into naira
