@@ -37,7 +37,7 @@ class Orders {
     };
     try {
       const response = await axios.post(`https://www.quidax.com/api/v1/users/${user_id}/orders`, body, this.options);
-      return response;
+      return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
