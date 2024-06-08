@@ -63,6 +63,26 @@ class Orders {
     }
   }
 
+  public async create_instant_order_usdt(user_id: string, currency: string, volume: number) {
+    const body = {
+      bid: 'usdt', // Sell into USDT
+      ask: `${currency}`, // Currency to sell
+      type: 'sell',
+      volume: `${volume}`, // How much to sell, e.g 0.5btc
+      unit: `${currency}`, // The order will be estimated using btc
+    };
+    try {
+      const response = await axios.post(
+        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders`,
+        body,
+        this.options,
+      );
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
+
   public async confirm_instant_order(user_id: string, instant_order_id: string) {
     try {
       const response = await axios.post(
