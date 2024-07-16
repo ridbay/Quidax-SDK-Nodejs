@@ -12,13 +12,22 @@ class CustomError {
   static processError(error: any) {
     switch (error.response.status) {
       case 400:
-        throw new BadRequestError({ message: error.response.data.message, status: error.response.data.status });
+        throw new BadRequestError({
+          message: error?.response?.data?.message || error?.response?.data?.data?.message || error.message,
+          status: error.response.data.status,
+        });
       case 401:
-        throw new UnauthorizedError({ message: error.response.data.message, status: error.response.data.status });
+        throw new UnauthorizedError({
+          message: error?.response?.data?.message || error?.response?.data?.data?.message || error.message,
+          status: error.response.data.status,
+        });
       // case 404:
       //   throw new NotFoundError({ message: error.response.data.message, status: error.response.data.status })
       default:
-        throw new ServerError({ message: error.response.data.message, status: error.response.data.status });
+        throw new ServerError({
+          message: error?.response?.data?.message || error?.response?.data?.data?.message || error.message,
+          status: error.response.data.status,
+        });
     }
   }
 }
