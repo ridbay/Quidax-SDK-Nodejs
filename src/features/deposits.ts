@@ -43,6 +43,26 @@ class Deposits {
       CustomError.processError(error);
     }
   }
+
+  public async fetch_all_deposit_by_date(
+    user_id: string,
+    currency: string,
+    state: string,
+    per_page: string,
+    // page: string,
+    start_date: string,
+    end_date: string,
+  ) {
+    try {
+      const response = await axios.get(
+        `https://www.quidax.com/api/v1/userss/${user_id}/deposits/all?currency=${currency}&state=${state}&start_date=${start_date}&end_date=${end_date}&per_page=${per_page}`,
+        this.options,
+      );
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
 }
 
 export default Deposits;
