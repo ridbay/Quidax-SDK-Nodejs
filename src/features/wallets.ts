@@ -41,7 +41,6 @@ class Wallets {
 
       return response.data;
     } catch (error) {
-      console.log('Package_create_payment_address: ', error);
       CustomError.processError(error);
     }
   }
@@ -69,7 +68,6 @@ class Wallets {
       const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}`, this.options);
       return response.data;
     } catch (error) {
-      // console.log('Package Error User wallet: ', error);
       CustomError.processError(error);
     }
   }

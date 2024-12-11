@@ -37,7 +37,6 @@ class User {
 
       return data;
     } catch (error) {
-      console.log('Package_create_subAccount: ', error);
       CustomError.processError(error);
     }
   }
@@ -53,7 +52,6 @@ class User {
 
       return data;
     } catch (error) {
-      // console.log({ error });
       CustomError.processError(error);
     }
   }

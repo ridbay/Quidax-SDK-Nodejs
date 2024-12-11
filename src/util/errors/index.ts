@@ -10,6 +10,7 @@ class CustomError {
    * @memberof CustomError
    */
   static processError(error: any) {
+    console.log({ package_error: error });
     switch (error.response.status) {
       case 400:
         throw new BadRequestError({
