@@ -1,11 +1,15 @@
 import BaseError from './baseError';
 
+interface ServerErrorOptions {
+  message?: string;
+  status?: number;
+  code?: string;
+}
+
 class ServerError extends BaseError {
-  constructor(options: any = {}) {
-    super(options);
+  constructor({ message, status, code }: ServerErrorOptions = {}) {
+    super({ message, status, code });
     this.name = this.constructor.name;
-    this.message = options.message;
-    this.status = options.status;
   }
 }
 

@@ -1,22 +1,19 @@
 // import util from "util"
-
+interface BaseErrorOptions {
+  message?: string;
+  status?: number;
+  code?: string;
+}
 class BaseError extends Error {
   status: any;
 
-  /**
-   * The BaseError Constructor.
-   * @param {Object} options - A configuration object for errors.
-   * @param {String} options.message - The error message if any.
-   * @constructor BaseError
-   */
-  constructor(options: any = {}) {
-    super(options.message);
+  code: any;
 
-    // Error.captureStackTrace(this, this.constructor)
-    // new Error.captureStackTrace(this, this.constructor)
+  constructor({ message, status, code }: BaseErrorOptions = {}) {
+    super(message);
     this.name = this.constructor.name;
-    this.message = options.message;
-    this.status = options.status;
+    this.status = status;
+    this.code = code;
     Object.setPrototypeOf(this, new.target.prototype);
   }
 }

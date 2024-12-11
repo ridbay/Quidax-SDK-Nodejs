@@ -1,11 +1,15 @@
 import BaseError from './baseError';
 
+interface UnauthorizedErrorOptions {
+  message?: string;
+  status?: number;
+  code?: string;
+}
+
 class UnauthorizedError extends BaseError {
-  constructor(options: any = {}) {
-    super(options);
+  constructor({ message, status, code }: UnauthorizedErrorOptions = {}) {
+    super({ message, status, code });
     this.name = this.constructor.name;
-    this.message = options.message;
-    this.status = options.status;
   }
 }
 

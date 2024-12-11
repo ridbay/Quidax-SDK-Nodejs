@@ -1,11 +1,15 @@
 import BaseError from './baseError';
 
+interface BadRequestErrorOptions {
+  message?: string;
+  status?: number;
+  code?: string;
+}
+
 class BadRequestError extends BaseError {
-  constructor(options: any = {}) {
-    super(options);
+  constructor({ message, status, code }: BadRequestErrorOptions = {}) {
+    super({ message, status, code });
     this.name = this.constructor.name;
-    this.message = options.message;
-    this.status = options.status;
   }
 }
 
