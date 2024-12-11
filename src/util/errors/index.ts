@@ -11,6 +11,11 @@ class CustomError {
    */
   static processError(error: any) {
     console.log({ package_error: error });
+    console.log({ error_response_data_message: error?.response?.data?.message });
+    console.log({ error_response_data_data_message: error?.response?.data?.data?.message });
+    console.log({ error_message: error.message });
+    console.log({ error_response_status: error.response.status });
+    console.log({ error_response_data_status: error.response.data.status });
     switch (error.response.status) {
       case 400:
         throw new BadRequestError({
