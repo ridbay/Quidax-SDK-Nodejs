@@ -12,7 +12,7 @@ class Swap {
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {
-    this.base_url = 'https://www.quidax.com/api/v1';
+    this.base_url = 'https://app.quidax.io/api/v1';
     this.options = {
       headers: {
         Authorization: `Bearer ${api_key}`,
@@ -29,7 +29,7 @@ class Swap {
     };
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/swap_quotation`,
+        `https://app.quidax.io/api/v1/users/${user_id}/swap_quotation`,
         body,
         this.options,
       );
@@ -42,7 +42,7 @@ class Swap {
   public async confirm_instant_swap(user_id: string, quotation_id: string) {
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/swap_quotation/${quotation_id}/confirm`,
+        `https://app.quidax.io/api/v1/users/${user_id}/swap_quotation/${quotation_id}/confirm`,
         null,
         this.options,
       );
@@ -67,7 +67,7 @@ class Swap {
     };
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/swap_quotation/${quotation_id}/refresh`,
+        `https://app.quidax.io/api/v1/users/${user_id}/swap_quotation/${quotation_id}/refresh`,
         body,
         this.options,
       );
@@ -80,7 +80,7 @@ class Swap {
   public async fetch_swap_transaction(user_id: string, swap_transaction_id: string) {
     try {
       const response = await axios.get(
-        `https://www.quidax.com/api/v1/users/${user_id}/swap_transactions/${swap_transaction_id}`,
+        `https://app.quidax.io/api/v1/users/${user_id}/swap_transactions/${swap_transaction_id}`,
         this.options,
       );
       return response.data;
@@ -91,10 +91,7 @@ class Swap {
 
   public async get_swap_transactions(user_id: string) {
     try {
-      const response = await axios.get(
-        `https://www.quidax.com/api/v1/users/${user_id}/swap_transactions`,
-        this.options,
-      );
+      const response = await axios.get(`https://app.quidax.io/api/v1/users/${user_id}/swap_transactions`, this.options);
       return response.data;
     } catch (error) {
       CustomError.processError(error);

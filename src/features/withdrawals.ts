@@ -12,7 +12,7 @@ class Withdrawals {
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {
-    this.base_url = 'https://www.quidax.com/api/v1';
+    this.base_url = 'https://app.quidax.io/api/v1';
     this.options = {
       headers: {
         Authorization: `Bearer ${api_key}`,

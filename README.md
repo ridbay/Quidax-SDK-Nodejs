@@ -1,6 +1,6 @@
 # Quidax-Package
 
-A community supported NodeJS Package that enables developers to build crypto products securely and seamlessy leveraging [Quidax's](https://quidax.com/) API.
+A community supported NodeJS Package that enables developers to build crypto products securely and seamlessy leveraging [Quidax's](https://app.quidax.io/) API.
 
 ## Table of content
 
@@ -11,7 +11,7 @@ A community supported NodeJS Package that enables developers to build crypto pro
 
 ## Getting Started
 
-- To get started with this Package, create an [account](https://quidax.com/) on Quidax, if you haven't already.
+- To get started with this Package, create an [account](https://app.quidax.io/) on Quidax, if you haven't already.
 - You can then retrieve your API keys from your account dashboard.
 
 #### Want to contribute?
@@ -37,8 +37,8 @@ yarn add quidax-package
 ## Usage
 
 ```js
-const Quidax  = require('quidax-package'); // JavaScript
-import Quidax  from 'quidax-package'; // Typescript
+const Quidax = require('quidax-package'); // JavaScript
+import Quidax from 'quidax-package'; // Typescript
 ```
 
 Instantiate the Quidax class
@@ -47,8 +47,7 @@ Instantiate the Quidax class
 const quidax = new Quidax(PRIVATE_KEY);
 ```
 
-
-- For more information about the services exposed by the Package, please refer to the [documentation](https://docs.quidax.com/reference/introduction-user-accounts).
+- For more information about the services exposed by the Package, please refer to the [documentation](https://docs.app.quidax.io/reference/introduction-user-accounts).
 - Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html).
 
 ## Available Services exposed by the Package

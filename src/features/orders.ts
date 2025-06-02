@@ -12,7 +12,7 @@ class Orders {
   public options: { headers: { Authorization: string } };
 
   constructor(public api_key: string) {
-    this.base_url = 'https://www.quidax.com/api/v1';
+    this.base_url = 'https://app.quidax.io/api/v1';
     this.options = {
       headers: {
         Authorization: `Bearer ${api_key}`,
@@ -36,7 +36,7 @@ class Orders {
       volume,
     };
     try {
-      const response = await axios.post(`https://www.quidax.com/api/v1/users/${user_id}/orders`, body, this.options);
+      const response = await axios.post(`https://app.quidax.io/api/v1/users/${user_id}/orders`, body, this.options);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -53,7 +53,7 @@ class Orders {
     };
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders`,
+        `https://app.quidax.io/api/v1/users/${user_id}/instant_orders`,
         body,
         this.options,
       );
@@ -73,7 +73,7 @@ class Orders {
     };
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders`,
+        `https://app.quidax.io/api/v1/users/${user_id}/instant_orders`,
         body,
         this.options,
       );
@@ -86,7 +86,7 @@ class Orders {
   public async confirm_instant_order(user_id: string, instant_order_id: string) {
     try {
       const response = await axios.post(
-        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders/${instant_order_id}/confirm`,
+        `https://app.quidax.io/api/v1/users/${user_id}/instant_orders/${instant_order_id}/confirm`,
         null,
         this.options,
       );
@@ -99,7 +99,7 @@ class Orders {
   public async fetch_instant_order(user_id: string, instant_order_id: string) {
     try {
       const response = await axios.get(
-        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders/${instant_order_id}`,
+        `https://app.quidax.io/api/v1/users/${user_id}/instant_orders/${instant_order_id}`,
         this.options,
       );
       return response.data;
@@ -111,7 +111,7 @@ class Orders {
   public async fetch_instant_orders_by_currency(user_id: string, currency: string) {
     try {
       const response = await axios.get(
-        `https://www.quidax.com/api/v1/users/${user_id}/instant_orders?market=${currency}ngn&state=done&order_by=desc`,
+        `https://app.quidax.io/api/v1/users/${user_id}/instant_orders?market=${currency}ngn&state=done&order_by=desc`,
         this.options,
       );
       return response.data;
