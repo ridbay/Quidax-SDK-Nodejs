@@ -1,6 +1,8 @@
-import axios from 'axios';
+import type { AxiosInstance } from 'axios';
 import CustomError from '../util/errors';
 import { NetworkType } from '../enums';
+import createHttpClient from '../util/http';
+// import type { QuidaxApiEnvelope, WalletAddress } from '../types/api';
 /**
  * The quidax module for handling all quidax related operations.
  * @class Quidax
@@ -11,18 +13,18 @@ import { NetworkType } from '../enums';
 class Wallets {
   public base_url: string;
 
-  public options: { headers: { Authorization: string } };
+  private client: AxiosInstance;
 
   constructor(public api_key: string) {
     this.base_url = 'https://app.quidax.io/api/v1';
-    this.options = {
-      headers: {
-        Authorization: `Bearer ${api_key}`,
-      },
-    };
+    this.client = createHttpClient(this.api_key);
   }
 
-  public async create_payment_address(user_id: string, currency: string, network: NetworkType) {
+  public async create_payment_address(
+    user_id: string,
+    currency: string,
+    network: NetworkType,
+  ): Promise<any> {
     try {
       // const url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
       let url;
@@ -37,7 +39,7 @@ class Wallets {
         url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
       }
 
-      const response = await axios.post(url, null, this.options);
+      const response = await this.client.post(url, null);
 
       return response.data;
     } catch (error) {
@@ -45,40 +47,131 @@ class Wallets {
     }
   }
 
-  public async fetch_payment_address(user_id: string, currency: string) {
+  public async createPaymentAddress(
+    user_id: string,
+    currency: string,
+    network: NetworkType,
+  ): Promise<any> {
+    return this.create_payment_address(user_id, currency, network);
+  }
+
+  public async fetch_payment_address(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
     try {
-      const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}/address`, this.options);
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}/address`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
   }
 
-  public async fetch_payment_addresses(user_id: string, currency: string) {
+  public async fetchPaymentAddress(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
+    return this.fetch_payment_address(user_id, currency);
+  }
+
+  public async fetch_payment_addresses(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
     try {
-      const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}/addresses`, this.options);
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}/addresses`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
   }
 
-  public async fetch_user_wallet(user_id: string, currency: string) {
+  public async fetchPaymentAddresses(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
+    return this.fetch_payment_addresses(user_id, currency);
+  }
+
+  public async fetch_user_wallet(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
     try {
-      const response = await axios.get(`${this.base_url}/users/${user_id}/wallets/${currency}`, this.options);
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
   }
 
-  public async fetch_all_user_wallets(user_id: string) {
+  public async fetchUserWallet(
+    user_id: string,
+    currency: string,
+  ): Promise<any> {
+    return this.fetch_user_wallet(user_id, currency);
+  }
+
+  public async fetch_all_user_wallets(user_id: string): Promise<any> {
     try {
-      const response = await axios.get(`${this.base_url}/users/${user_id}/wallets`, this.options);
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
+  }
+
+  public async fetchAllUserWallets(user_id: string): Promise<any> {
+    return this.fetch_all_user_wallets(user_id);
+  }
+
+  // New additions
+  public async fetch_payment_address_by_id(
+    user_id: string,
+    currency: string,
+    address_id: string,
+  ): Promise<any> {
+    try {
+      const response = await this.client.get(
+        `${this.base_url}/users/${user_id}/wallets/${currency}/addresses/${address_id}`,
+      );
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
+
+  public async fetchPaymentAddressById(
+    user_id: string,
+    currency: string,
+    address_id: string,
+  ): Promise<any> {
+    return this.fetch_payment_address_by_id(user_id, currency, address_id);
+  }
+
+  public async reenque_generated_wallet_address(
+    user_id: string,
+    currency: string,
+    address_id: string,
+  ): Promise<any> {
+    try {
+      // The docs spell this as "re-enque"; using snake_case path suffix `re_enque`.
+      const response = await this.client.post(
+        `${this.base_url}/users/${user_id}/wallets/${currency}/addresses/${address_id}/re_enque`,
+        null,
+      );
+      return response.data;
+    } catch (error) {
+      CustomError.processError(error);
+    }
+  }
+
+  public async reEnqueGeneratedWalletAddress(
+    user_id: string,
+    currency: string,
+    address_id: string,
+  ): Promise<any> {
+    return this.reenque_generated_wallet_address(user_id, currency, address_id);
   }
 }
 

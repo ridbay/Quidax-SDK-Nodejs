@@ -2,8 +2,8 @@ import BaseError from './baseError';
 
 interface ServerErrorOptions {
   message?: string;
-  status?: number;
-  code?: string;
+  status?: any;
+  code?: any;
 }
 
 class ServerError extends BaseError {

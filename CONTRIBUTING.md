@@ -26,4 +26,4 @@ This will keep your changes in sync with the main branch and most importantly, t
 
 ### LICENSE
 
-This project is licenced under the [GNU GPL Licence](https://github.com/ridbay/quidax-package/blob/main/LICENCE).
+This project is licensed under the [MIT License](https://github.com/ridbay/quidax-package/blob/main/LICENSE).

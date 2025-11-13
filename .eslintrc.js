@@ -5,11 +5,18 @@ module.exports = {
     node: true,
   },
   extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
-  overrides: [],
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.ts', '**/*.test.ts'],
+      rules: {
+        'import/first': 'off',
+      },
+    },
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
   },
   rules: {
     "import/no-extraneous-dependencies":"off",

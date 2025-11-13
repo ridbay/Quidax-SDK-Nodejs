@@ -4,7 +4,14 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["src", "src/types/index.d.ts"],
   "exclude": ["node_modules", "**/__tests__/*"]

@@ -1,8 +1,8 @@
 // import util from "util"
 interface BaseErrorOptions {
   message?: string;
-  status?: number;
-  code?: string;
+  status?: any;
+  code?: any;
 }
 class BaseError extends Error {
   status: any;

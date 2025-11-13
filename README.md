@@ -1,12 +1,16 @@
 # Quidax-Package
-
-A community supported NodeJS Package that enables developers to build crypto products securely and seamlessy leveraging [Quidax's](https://app.quidax.io/) API.
+  
+  [![npm version](https://img.shields.io/npm/v/quidax-package)](https://www.npmjs.com/package/quidax-package)
+  [![npm downloads](https://img.shields.io/npm/dm/quidax-package)](https://www.npmjs.com/package/quidax-package)
+  [![license: MIT](https://img.shields.io/npm/l/quidax-package)](./LICENSE)
+  [![CI](https://github.com/ridbay/Quidax-Package/actions/workflows/ci.yml/badge.svg)](https://github.com/ridbay/Quidax-Package/actions/workflows/ci.yml)
+  
+  A community supported NodeJS Package that enables developers to build crypto products securely and seamlessy leveraging [Quidax's](https://app.quidax.io/) API.
 
 ## Table of content
 
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Available Services exposed by the Package](#available-services-exposed-by-the-sdk)
 
 ## Getting Started
@@ -53,3 +57,64 @@ const quidax = new Quidax(PRIVATE_KEY);
 ## Available Services exposed by the Package
 
 The following services are available with this package
+
+### Quidax Services
+
+- **User** (`quidax.user`)
+  - `create_subAccount(email, firstname, lastname, phone_number)` → alias: `createSubAccount(...)`
+  - `fetch_single_subAccount(email)` → alias: `fetchSingleSubAccount(email)`
+  - `fetch_all_subAccounts()` → alias: `fetchAllSubAccounts()`
+
+- **Wallets** (`quidax.wallets`)
+  - `create_payment_address(user_id, currency, network)` → alias: `createPaymentAddress(...)`
+  - `fetch_payment_address(user_id, currency)` → alias: `fetchPaymentAddress(...)`
+  - `fetch_payment_addresses(user_id, currency)` → alias: `fetchPaymentAddresses(...)`
+  - `fetch_user_wallet(user_id, currency)` → alias: `fetchUserWallet(...)`
+  - `fetch_all_user_wallets(user_id)` → alias: `fetchAllUserWallets(user_id)`
+
+- **Market** (`quidax.market`)
+  - `fetch_market_tickers()` → alias: `fetchMarketTickers()`
+
+- **Orders** (`quidax.orders`)
+  - `create_order(user_id, market, side, ord_type, price, volume)` → alias: `createOrder(...)`
+  - `create_instant_order(user_id, currency, volume)` → alias: `createInstantOrder(...)`
+  - `create_instant_order_usdt(user_id, currency, volume)` → alias: `createInstantOrderUsdt(...)`
+  - `confirm_instant_order(user_id, instant_order_id)` → alias: `confirmInstantOrder(...)`
+  - `fetch_instant_order(user_id, instant_order_id)` → alias: `fetchInstantOrder(...)`
+  - `fetch_instant_orders_by_currency(user_id, currency)` → alias: `fetchInstantOrdersByCurrency(...)`
+
+- **Deposits** (`quidax.deposits`)
+  - `fetch_single_deposit(user_id, deposit_id)` → alias: `fetchSingleDeposit(...)`
+  - `fetch_all_deposit(user_id, currency, state, per_page?, page?)` → alias: `fetchAllDeposit(...)`
+  - `fetch_all_deposit_by_date(user_id, currency, state, per_page, start_date, end_date)` → alias: `fetchAllDepositByDate(...)`
+
+- **Withdrawals** (`quidax.withdrawals`)
+  - `create_a_withdrawal_to_merchant(amount, user_id, merchant_id)` → alias: `createAWithdrawalToMerchant(...)`
+
+- **Swap** (`quidax.swap`)
+  - `create_instant_swap(user_id, from_currency, to_currency, from_amount)` → alias: `createInstantSwap(...)`
+  - `confirm_instant_swap(user_id, quotation_id)` → alias: `confirmInstantSwap(...)`
+  - `refresh_instant_swap(user_id, from_currency, to_currency, from_amount, quotation_id)` → alias: `refreshInstantSwap(...)`
+  - `fetch_swap_transaction(user_id, swap_transaction_id)` → alias: `fetchSwapTransaction(...)`
+  - `get_swap_transactions(user_id)` → alias: `getSwapTransactions(user_id)`
+
+### Example
+
+```ts
+import Quidax from 'quidax-package';
+
+const quidax = new Quidax(process.env.QUIDAX_API_KEY!);
+
+// Create sub account (using camelCase alias)
+await quidax.user.createSubAccount('user@example.com', 'Ada', 'Lovelace', '+2348000000000');
+
+// Fetch market tickers
+const tickers = await quidax.market.fetchMarketTickers();
+console.log(tickers.data);
+
+// Create instant order
+const instant = await quidax.orders.createInstantOrder('USER_ID', 'btc', 0.5);
+console.log(instant.data);
+```
+
+All methods return a typed envelope with the shape `{ status, message?, data, meta? }` where `data` contains the endpoint-specific payload.

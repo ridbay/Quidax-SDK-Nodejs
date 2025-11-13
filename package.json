@@ -1,25 +1,31 @@
 {
-  "name": "quidax-package",
-  "version": "1.0.45",
-  "description": "quidax package",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write 'src/**/*.ts'",
-    "lint": "eslint --ext .ts .",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
+    "name": "quidax-package",
+    "version": "1.0.45",
+    "description": "quidax package",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "exports": "./lib/index.js",
+    "sideEffects": false,
+    "scripts": {
+      "build": "tsc",
+      "typecheck": "tsc -p tsconfig.json --noEmit",
+      "format": "prettier --write 'src/**/*.ts'",
+      "format:check": "prettier --check 'src/**/*.ts'",
+      "lint": "eslint --ext .ts .",
+      "lint:fix": "eslint --ext .ts . --fix",
+      "test": "vitest run",
+      "prepare": "npm run build",
+      "prepublishOnly": "npm run lint && npm run typecheck && npm run build",
+      "preversion": "npm run lint",
+      "version": "npm run format && git add -A src",
+      "postversion": "git push && git push --tags"
+    },
   "keywords": [
     "quidax",
     "endpoints"
   ],
   "author": "Ridwan Balogun Ridbay",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.4.0"
   },
@@ -32,7 +38,8 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "^1.6.0"
   },
   "files": [
     "lib/**/*"
@@ -40,5 +47,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ridbay/Quidax-Package.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ridbay/Quidax-Package/issues"
+  },
+  "homepage": "https://github.com/ridbay/Quidax-Package#readme",
+  "engines": {
+    "node": ">=16"
   }
 }
