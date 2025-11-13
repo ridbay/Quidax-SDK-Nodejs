@@ -18,11 +18,7 @@ class Withdrawals {
     this.client = createHttpClient(this.api_key);
   }
 
-  public async create_a_withdrawal_to_merchant(
-    amount: string,
-    user_id: string,
-    merchant_id: string,
-  ): Promise<any> {
+  public async create_a_withdrawal_to_merchant(amount: string, user_id: string, merchant_id: string): Promise<any> {
     const currency = 'ngn';
 
     try {
@@ -36,11 +32,7 @@ class Withdrawals {
     }
   }
 
-  public async createAWithdrawalToMerchant(
-    amount: string,
-    user_id: string,
-    merchant_id: string,
-  ): Promise<any> {
+  public async createAWithdrawalToMerchant(amount: string, user_id: string, merchant_id: string): Promise<any> {
     return this.create_a_withdrawal_to_merchant(amount, user_id, merchant_id);
   }
 
@@ -104,9 +96,7 @@ class Withdrawals {
 
   public async fetch_withdrawal(user_id: string, withdrawal_id: string): Promise<any> {
     try {
-      const response = await this.client.get(
-        `${this.base_url}/users/${user_id}/withdraws/${withdrawal_id}`,
-      );
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/withdraws/${withdrawal_id}`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);

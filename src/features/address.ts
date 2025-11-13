@@ -12,11 +12,7 @@ class Address {
     this.client = createHttpClient(this.api_key);
   }
 
-  public async validate_address(
-    currency: string,
-    address: string,
-    network?: string,
-  ): Promise<any> {
+  public async validate_address(currency: string, address: string, network?: string): Promise<any> {
     try {
       const params = new URLSearchParams({ currency, address });
       if (network) params.append('network', network);
@@ -27,11 +23,7 @@ class Address {
     }
   }
 
-  public async validateAddress(
-    currency: string,
-    address: string,
-    network?: string,
-  ): Promise<any> {
+  public async validateAddress(currency: string, address: string, network?: string): Promise<any> {
     return this.validate_address(currency, address, network);
   }
 }

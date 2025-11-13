@@ -12,10 +12,7 @@ class Beneficiaries {
     this.client = createHttpClient(this.api_key);
   }
 
-  public async fetch_beneficiaries(
-    user_id: string,
-    params?: { page?: number; per_page?: number },
-  ): Promise<any> {
+  public async fetch_beneficiaries(user_id: string, params?: { page?: number; per_page?: number }): Promise<any> {
     try {
       const qs = new URLSearchParams();
       if (params?.per_page) qs.append('per_page', String(params.per_page));
@@ -28,61 +25,37 @@ class Beneficiaries {
     }
   }
 
-  public async fetchBeneficiaries(
-    user_id: string,
-    params?: { page?: number; per_page?: number },
-  ): Promise<any> {
+  public async fetchBeneficiaries(user_id: string, params?: { page?: number; per_page?: number }): Promise<any> {
     return this.fetch_beneficiaries(user_id, params);
   }
 
-  public async create_beneficiary(
-    user_id: string,
-    payload: Record<string, any>,
-  ): Promise<any> {
+  public async create_beneficiary(user_id: string, payload: Record<string, any>): Promise<any> {
     try {
-      const response = await this.client.post(
-        `${this.base_url}/users/${user_id}/beneficiaries`,
-        payload,
-      );
+      const response = await this.client.post(`${this.base_url}/users/${user_id}/beneficiaries`, payload);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
   }
 
-  public async createBeneficiary(
-    user_id: string,
-    payload: Record<string, any>,
-  ): Promise<any> {
+  public async createBeneficiary(user_id: string, payload: Record<string, any>): Promise<any> {
     return this.create_beneficiary(user_id, payload);
   }
 
-  public async fetch_beneficiary(
-    user_id: string,
-    beneficiary_id: string,
-  ): Promise<any> {
+  public async fetch_beneficiary(user_id: string, beneficiary_id: string): Promise<any> {
     try {
-      const response = await this.client.get(
-        `${this.base_url}/users/${user_id}/beneficiaries/${beneficiary_id}`,
-      );
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/beneficiaries/${beneficiary_id}`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
     }
   }
 
-  public async fetchBeneficiary(
-    user_id: string,
-    beneficiary_id: string,
-  ): Promise<any> {
+  public async fetchBeneficiary(user_id: string, beneficiary_id: string): Promise<any> {
     return this.fetch_beneficiary(user_id, beneficiary_id);
   }
 
-  public async edit_beneficiary(
-    user_id: string,
-    beneficiary_id: string,
-    payload: Record<string, any>,
-  ): Promise<any> {
+  public async edit_beneficiary(user_id: string, beneficiary_id: string, payload: Record<string, any>): Promise<any> {
     try {
       const response = await this.client.put(
         `${this.base_url}/users/${user_id}/beneficiaries/${beneficiary_id}`,
@@ -94,11 +67,7 @@ class Beneficiaries {
     }
   }
 
-  public async editBeneficiary(
-    user_id: string,
-    beneficiary_id: string,
-    payload: Record<string, any>,
-  ): Promise<any> {
+  public async editBeneficiary(user_id: string, beneficiary_id: string, payload: Record<string, any>): Promise<any> {
     return this.edit_beneficiary(user_id, beneficiary_id, payload);
   }
 }

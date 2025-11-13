@@ -21,9 +21,7 @@ class Deposits {
 
   public async fetch_single_deposit(user_id: string, deposit_id: string): Promise<any> {
     try {
-      const response = await this.client.get(
-        `${this.base_url}/users/${user_id}/deposits/${deposit_id}`,
-      );
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/deposits/${deposit_id}`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -42,8 +40,9 @@ class Deposits {
     page?: string,
   ): Promise<any> {
     try {
-      const url = `${this.base_url}/users/${user_id}/deposits?currency=${currency}&state=${state}&order_by=desc${per_page && page ? `&per_page=${per_page}&page=${page}` : ''
-        }`;
+      const url = `${this.base_url}/users/${user_id}/deposits?currency=${currency}&state=${state}&order_by=desc${
+        per_page && page ? `&per_page=${per_page}&page=${page}` : ''
+      }`;
       const response = await this.client.get(url);
       return response.data;
     } catch (error) {

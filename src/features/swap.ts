@@ -25,10 +25,7 @@ class Swap {
       from_amount,
     };
     try {
-      const response = await this.client.post(
-        `${this.base_url}/users/${user_id}/swap_quotation`,
-        body,
-      );
+      const response = await this.client.post(`${this.base_url}/users/${user_id}/swap_quotation`, body);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -42,10 +39,7 @@ class Swap {
       from_amount,
     };
     try {
-      const response = await this.client.post(
-        `${this.base_url}/users/me/temporary_swap_quotation`,
-        body,
-      );
+      const response = await this.client.post(`${this.base_url}/users/me/temporary_swap_quotation`, body);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -63,8 +57,6 @@ class Swap {
       CustomError.processError(error);
     }
   }
-
-
 
   public async refresh_instant_swap(
     user_id: string,

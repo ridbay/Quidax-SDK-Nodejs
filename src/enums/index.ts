@@ -15,4 +15,3 @@ export enum StatusCodes {
 }
 
 export type NetworkType = 'btc' | 'bep20' | 'erc20' | 'trc20' | 'doge' | 'polygon' | 'solana' | 'none';
-

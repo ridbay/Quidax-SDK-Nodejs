@@ -107,9 +107,7 @@ class Orders {
 
   public async fetch_instant_order(user_id: string, instant_order_id: string): Promise<any> {
     try {
-      const response = await this.client.get(
-        `${this.base_url}/users/${user_id}/instant_orders/${instant_order_id}`,
-      );
+      const response = await this.client.get(`${this.base_url}/users/${user_id}/instant_orders/${instant_order_id}`);
       return response.data;
     } catch (error) {
       CustomError.processError(error);
@@ -178,10 +176,7 @@ class Orders {
 
   public async cancel_order(user_id: string, order_id: string): Promise<any> {
     try {
-      const response = await this.client.post(
-        `${this.base_url}/users/${user_id}/orders/${order_id}/cancel`,
-        null,
-      );
+      const response = await this.client.post(`${this.base_url}/users/${user_id}/orders/${order_id}/cancel`, null);
       return response.data;
     } catch (error) {
       CustomError.processError(error);

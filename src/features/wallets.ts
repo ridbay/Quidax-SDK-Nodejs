@@ -20,11 +20,7 @@ class Wallets {
     this.client = createHttpClient(this.api_key);
   }
 
-  public async create_payment_address(
-    user_id: string,
-    currency: string,
-    network: NetworkType,
-  ): Promise<any> {
+  public async create_payment_address(user_id: string, currency: string, network: NetworkType): Promise<any> {
     try {
       // const url = `${this.base_url}/users/${user_id}/wallets/${currency}/addresses?network=${network}`;
       let url;
@@ -47,18 +43,11 @@ class Wallets {
     }
   }
 
-  public async createPaymentAddress(
-    user_id: string,
-    currency: string,
-    network: NetworkType,
-  ): Promise<any> {
+  public async createPaymentAddress(user_id: string, currency: string, network: NetworkType): Promise<any> {
     return this.create_payment_address(user_id, currency, network);
   }
 
-  public async fetch_payment_address(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetch_payment_address(user_id: string, currency: string): Promise<any> {
     try {
       const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}/address`);
       return response.data;
@@ -67,17 +56,11 @@ class Wallets {
     }
   }
 
-  public async fetchPaymentAddress(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetchPaymentAddress(user_id: string, currency: string): Promise<any> {
     return this.fetch_payment_address(user_id, currency);
   }
 
-  public async fetch_payment_addresses(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetch_payment_addresses(user_id: string, currency: string): Promise<any> {
     try {
       const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}/addresses`);
       return response.data;
@@ -86,17 +69,11 @@ class Wallets {
     }
   }
 
-  public async fetchPaymentAddresses(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetchPaymentAddresses(user_id: string, currency: string): Promise<any> {
     return this.fetch_payment_addresses(user_id, currency);
   }
 
-  public async fetch_user_wallet(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetch_user_wallet(user_id: string, currency: string): Promise<any> {
     try {
       const response = await this.client.get(`${this.base_url}/users/${user_id}/wallets/${currency}`);
       return response.data;
@@ -105,10 +82,7 @@ class Wallets {
     }
   }
 
-  public async fetchUserWallet(
-    user_id: string,
-    currency: string,
-  ): Promise<any> {
+  public async fetchUserWallet(user_id: string, currency: string): Promise<any> {
     return this.fetch_user_wallet(user_id, currency);
   }
 
@@ -126,11 +100,7 @@ class Wallets {
   }
 
   // New additions
-  public async fetch_payment_address_by_id(
-    user_id: string,
-    currency: string,
-    address_id: string,
-  ): Promise<any> {
+  public async fetch_payment_address_by_id(user_id: string, currency: string, address_id: string): Promise<any> {
     try {
       const response = await this.client.get(
         `${this.base_url}/users/${user_id}/wallets/${currency}/addresses/${address_id}`,
@@ -141,19 +111,11 @@ class Wallets {
     }
   }
 
-  public async fetchPaymentAddressById(
-    user_id: string,
-    currency: string,
-    address_id: string,
-  ): Promise<any> {
+  public async fetchPaymentAddressById(user_id: string, currency: string, address_id: string): Promise<any> {
     return this.fetch_payment_address_by_id(user_id, currency, address_id);
   }
 
-  public async reenque_generated_wallet_address(
-    user_id: string,
-    currency: string,
-    address_id: string,
-  ): Promise<any> {
+  public async reenque_generated_wallet_address(user_id: string, currency: string, address_id: string): Promise<any> {
     try {
       // The docs spell this as "re-enque"; using snake_case path suffix `re_enque`.
       const response = await this.client.post(
@@ -166,11 +128,7 @@ class Wallets {
     }
   }
 
-  public async reEnqueGeneratedWalletAddress(
-    user_id: string,
-    currency: string,
-    address_id: string,
-  ): Promise<any> {
+  public async reEnqueGeneratedWalletAddress(user_id: string, currency: string, address_id: string): Promise<any> {
     return this.reenque_generated_wallet_address(user_id, currency, address_id);
   }
 }
